@@ -16,6 +16,8 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
     "http-proxy-middleware": "^3.0.5",
+    "joi": "^17.13.3",
+    "path": "^0.12.7",
     "winston": "^3.17.0"
   },
   "devDependencies": {
