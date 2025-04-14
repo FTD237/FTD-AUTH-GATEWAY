@@ -1,2 +1,2 @@
-# FTD-AUTH
-Authentification system for FTD applications
+# FTD-AUTH-GATEWAY
+Api-gateway ton authenticate FTD applications before redirect request to FTD-Service-auth
