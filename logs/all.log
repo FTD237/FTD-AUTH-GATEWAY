@@ -1,0 +1,3 @@
+2025-04-14 15:06:06 info: API Gateway listening on 3000
+2025-04-14 15:06:06 info: Environnement: development
+2025-04-14 15:06:06 info: Authentication service target: http://localhost:8080
