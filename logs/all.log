@@ -1,3 +1,27 @@
 2025-04-14 15:06:06 info: API Gateway listening on 3000
 2025-04-14 15:06:06 info: Environnement: development
 2025-04-14 15:06:06 info: Authentication service target: http://localhost:8080
+2025-04-17 20:02:41 info: API Gateway listening on 3000
+2025-04-17 20:02:41 info: Environnement: development
+2025-04-17 20:02:41 info: Authentication service target: http://localhost:8080
+2025-04-17 20:04:54 info: GET /status 200 - 10ms
+2025-04-17 20:07:41 info: API Gateway listening on 3000
+2025-04-17 20:07:41 info: Environnement: development
+2025-04-17 20:07:41 info: Authentication service target: http://localhost:8080
+2025-04-17 20:07:45 info: GET /status 200 - 8ms
+2025-04-17 22:58:09 info: API Gateway listening on 3000
+2025-04-17 22:58:09 info: Environnement: development
+2025-04-17 22:58:09 info: Authentication service target: http://localhost:8080
+2025-04-22 13:41:29 info: API Gateway listening on 3000
+2025-04-22 13:41:29 info: Environnement: development
+2025-04-22 13:41:29 info: Authentication service target: http://localhost:8080
+2025-04-22 13:41:52 error: GET /auth Missing API key
+2025-04-22 13:43:28 info: API Gateway listening on 3000
+2025-04-22 13:43:28 info: Environnement: development
+2025-04-22 13:43:28 info: Authentication service target: http://localhost:8080
+2025-04-22 13:43:33 error: GET /auth Missing API key
+2025-04-22 13:43:33 warning: GET /auth 401 - 17ms
+2025-04-22 13:43:33 warning: GET /favicon.ico 404 - 1ms
+2025-04-22 15:38:16 info: API Gateway listening on 3000
+2025-04-22 15:38:16 info: Environnement: development
+2025-04-22 15:38:16 info: Authentication service target: http://localhost:8080
