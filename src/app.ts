@@ -26,7 +26,7 @@ app.get("/status", (req, res) => {
   });
 });
 
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
 
 app.use((req, res) => {
   res.status(404).json({

@@ -12,6 +12,10 @@ const envVarsSchema = Joi.object()
     PORT: Joi.number().default(3000),
     ALLOWED_ORIGINS: Joi.string().required(),
     RATE_LIMIT: Joi.number().default(100),
+    API_KEY_SOURCING: Joi.string().required(),
+    API_KEY_BEOUT: Joi.string().required(),
+    JWT_SECRET: Joi.string().required().min(32),
+    JWT_EXPIRES: Joi.string().required(),
   })
   .unknown();
 
@@ -30,5 +34,13 @@ export const appConfig = {
   rateLimiter: {
     windowMs: 15 * 60 * 1000,
     max: envVars.RATE_LIMIT,
+  },
+  apiKeys: new Map([
+    ["sourcing", envVars.API_KEY_SOURCING],
+    ["beOut", envVars.API_KEY_BEOUT],
+  ]),
+  jwt: {
+    secret: envVars.JWT_SECRET,
+    expiresIn: envVars.JWT_EXPIRES,
   },
 };

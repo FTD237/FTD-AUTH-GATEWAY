@@ -12,3 +12,9 @@ export interface ApiKeys {
 export interface AuthenticatedRequest extends Request {
   appInfo?: AppInfo;
 }
+
+export interface JwtPayload {
+  service: string;
+  exp: number;
+  iat: number;
+}

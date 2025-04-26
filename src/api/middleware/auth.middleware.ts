@@ -14,7 +14,7 @@ export const authenticateKey = (
 
     if (!apiKey) throw new ApiError(401, "Missing API key");
 
-    const appInfo = config.apiKeys[apiKey];
+    const appInfo = config.apiKeys.get(apiKey);
 
     if (!appInfo) {
       logger.warn(`Invalid API key: ${apiKey.substring(0, 4)}***`);

@@ -1,14 +1,23 @@
-import { Router } from 'express'
-import { authenticateKey } from "../middleware/auth.middleware";
-import {validateRequest} from "../middleware/validation.middleware";
-import {createAuthServiceProxy} from "../controllers/proxy.controller";
+import {Request, Router} from 'express'
+import {apiLimiter} from "../middleware/rate-limiter.middleware";
+import {authenticateApp} from "../controllers/authenticate.app.controller";
+import {verifyToken} from "../middleware/auth.application.middleware";
 
 const router = Router();
 
-router.use(
-    authenticateKey,
-    validateRequest,
-    createAuthServiceProxy(),
-)
+interface CustomRequest extends Request {
+    service?: string;
+}
+router.use('api', verifyToken)
 
+router.post('/auth', apiLimiter, authenticateApp)
+
+// route de test
+router.get('/api/data', apiLimiter, authenticateApp,(req: CustomRequest, res) => {
+    res.json({
+        status: 'success',
+        message: `Hello ${req.service}`,
+        data: {name: "a thing"}
+    })
+})
 export default router;
