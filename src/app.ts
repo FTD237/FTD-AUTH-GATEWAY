@@ -17,7 +17,7 @@ app.use(loggerMiddleware);
 
 app.use(apiLimiter);
 
-//route de status pour vérifier si la gateway est active
+
 app.get("/status", (req, res) => {
   res.status(200).json({
     status: "UP",

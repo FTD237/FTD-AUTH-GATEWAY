@@ -12,7 +12,6 @@ router.use('/api', verifyToken)
 
 router.post('/auth', apiLimiter, authenticateApp)
 
-// route de test
 router.get('/api/data', (req: CustomRequest, res) => {
     res.json({
         status: 'success',
