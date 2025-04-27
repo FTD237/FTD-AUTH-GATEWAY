@@ -2,7 +2,6 @@ import { Request } from "express";
 
 export interface AppInfo {
   appName: string;
-  permissions: string[];
 }
 
 export interface ApiKeys {

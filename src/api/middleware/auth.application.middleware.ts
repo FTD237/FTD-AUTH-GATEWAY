@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { JwtPayload } from "../../types";
 import {appConfig} from "../../config/app.config";
+import { logger } from "../../utils/logger";
 
 interface CustomRequest extends Request {
     service?: string;
@@ -16,6 +17,7 @@ export const verifyToken = (req: CustomRequest, res: Response, next: NextFunctio
             status: 'error',
             message: 'Access token is required'
         })
+        logger.warning(`Access token is required`)
         return
     }
 
@@ -35,6 +37,7 @@ export const verifyToken = (req: CustomRequest, res: Response, next: NextFunctio
                 message: 'Token has expired',
                 code: 'TOKEN_EXPIRED'
             })
+            logger.warning(`Token has expired`)
         }
 
         res.status(403).json({
@@ -42,5 +45,6 @@ export const verifyToken = (req: CustomRequest, res: Response, next: NextFunctio
             message: 'Invalid token',
             code: 'INVALID_TOKEN'
         })
+        logger.warning(`Invalid token`)
     }
 }

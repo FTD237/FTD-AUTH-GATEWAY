@@ -8,12 +8,12 @@ const router = Router();
 interface CustomRequest extends Request {
     service?: string;
 }
-router.use('api', verifyToken)
+router.use('/api', verifyToken)
 
 router.post('/auth', apiLimiter, authenticateApp)
 
 // route de test
-router.get('/api/data', apiLimiter, authenticateApp,(req: CustomRequest, res) => {
+router.get('/api/data', (req: CustomRequest, res) => {
     res.json({
         status: 'success',
         message: `Hello ${req.service}`,
