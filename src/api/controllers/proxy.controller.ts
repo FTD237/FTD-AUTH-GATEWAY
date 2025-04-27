@@ -11,6 +11,12 @@ export const createAuthServiceProxy = () => {
         secure: config.proxies.authService.secure,
 
         on: {
+            /**
+             *
+             * @param proxyReq
+             * @param req
+             * @param res
+             */
             proxyReq: (proxyReq, req, res) => {
                 const expressReq = req as unknown as Request;
 

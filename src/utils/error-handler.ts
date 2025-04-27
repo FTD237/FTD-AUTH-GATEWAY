@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
 import { logger } from "./logger";
 import { appConfig } from "../config/app.config";
 
@@ -31,7 +31,7 @@ export class ApiError extends Error {
   }
 }
 
-export const errorHandler = (
+export const errorHandler: ErrorRequestHandler = (
   err: Error | ApiError,
   req: Request,
   res: Response,
@@ -40,13 +40,14 @@ export const errorHandler = (
   logger.error(`${req.method} ${req.url} ${err.message}`);
 
   if (err instanceof ApiError) {
-    return res.status(err.statusCode).json({
+    res.status(err.statusCode).json({
       status: "error",
       message: err.message,
     });
+    return;
   }
 
-  return res.status(500).json({
+  res.status(500).json({
     status: "error",
     message:
       appConfig.environment === "development"

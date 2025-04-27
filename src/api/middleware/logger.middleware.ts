@@ -15,7 +15,7 @@ export const loggerMiddleware = (
     if (res.statusCode >= 500) {
       logger.error(message);
     } else if (res.statusCode >= 400) {
-      logger.warn(message);
+      logger.warning(message);
     } else {
       logger.info(message);
     }
