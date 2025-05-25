@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { appConfig } from "../../config/app.config";
 import { logger } from "../../utils/logger";
 import { AuthenticatedRequest } from "../../types";
+import {ApiError} from "../../utils/error-handler";
 
 export const authenticateApp = (req: AuthenticatedRequest, res: Response) => {
   const apiKey = req.headers["x-api-key"] as string;
@@ -12,6 +13,7 @@ export const authenticateApp = (req: AuthenticatedRequest, res: Response) => {
       status: "error",
       message: "API key is required",
     });
+    throw new ApiError(401, "Api key is required")
   }
   const validKey = Array.from(appConfig.apiKeys.values()).includes(apiKey);
 

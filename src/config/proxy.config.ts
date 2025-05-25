@@ -20,9 +20,9 @@ if (error) throw new Error(`Config validation error: ${error.message}`);
 export const proxyConfig = {
   authService: {
     target: envVars.AUTH_SERVICE_URL,
-    pathRewrite: {
-      "^auth": "/api/auth",
-    },
+      pathRewrite: {
+        "^/auth": '/api/auth'
+      },
     changeOrigin: true,
     secure: envVars.NODE_ENV === "production",
   },
