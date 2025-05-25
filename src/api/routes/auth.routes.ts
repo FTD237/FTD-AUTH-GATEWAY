@@ -21,7 +21,7 @@ router.get('/api/data', (req: CustomRequest, res) => {
     })
 })
 
-router.use('/',
+router.use('/api',
     createAuthServiceProxy()
 )
 export default router;
