@@ -9,7 +9,7 @@ const router = Router();
 interface CustomRequest extends Request {
     service?: string;
 }
-router.use('/api', verifyToken)
+router.use('/api', verifyToken, apiLimiter)
 
 router.post('/authenticate/app', apiLimiter, authenticateApp)
 

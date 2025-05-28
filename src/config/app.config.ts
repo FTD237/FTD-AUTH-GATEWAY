@@ -16,6 +16,9 @@ const envVarsSchema = Joi.object()
     API_KEY_BEOUT: Joi.string().required(),
     JWT_SECRET: Joi.string().required().min(32),
     JWT_EXPIRES: Joi.string().required(),
+    GATEWAY_SECRET: Joi.string().required().min(32),
+    GATEWAY_FORWARDER: Joi.string().required(),
+    GATEWAY_REAL_IP: Joi.string().required(),
   })
   .unknown();
 
@@ -42,5 +45,10 @@ export const appConfig = {
   jwt: {
     secret: envVars.JWT_SECRET,
     expiresIn: envVars.JWT_EXPIRES,
+  },
+  gateways: {
+    secret: envVars.GATEWAY_SECRET,
+    forwarder: envVars.GATEWAY_FORWARDER,
+    ip: envVars.GATEWAY_REAL_IP,
   },
 };

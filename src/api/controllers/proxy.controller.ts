@@ -18,11 +18,10 @@ export const createAuthServiceProxy = () => {
              */
             proxyReq: (proxyReq, req, res) => {
                 const expressReq = req as unknown as Request;
-                // TODO: enlever ces infos ici et les mettre en env ou config
-                proxyReq.setHeader('X-Gateway-secret', '5f8a9c0d3e6b4a7f9e3d2c1b0a987654')
+                proxyReq.setHeader('X-Gateway-secret', config.app.gateways.secret)
 
-                proxyReq.setHeader('X-Forwarded-For', '127.0.0.1');
-                proxyReq.setHeader('X-Real-IP', '127.0.0.1');
+                proxyReq.setHeader('X-Forwarded-For', config.app.gateways.forwarder);
+                proxyReq.setHeader('X-Real-IP', config.app.gateways.ip);
 
                 if (expressReq.body && Object.keys(expressReq.body).length > 0) {
                     const bodyData = JSON.stringify(expressReq.body)
