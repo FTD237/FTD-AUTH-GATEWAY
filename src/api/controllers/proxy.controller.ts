@@ -9,7 +9,6 @@ export const createAuthServiceProxy = () => {
         changeOrigin: config.proxies.authService.changeOrigin,
         pathRewrite: config.proxies.authService.pathRewrite,
         secure: config.proxies.authService.secure,
-
         on: {
             /**
              *
@@ -19,8 +18,10 @@ export const createAuthServiceProxy = () => {
              */
             proxyReq: (proxyReq, req, res) => {
                 const expressReq = req as unknown as Request;
+                proxyReq.setHeader('X-Gateway-secret', config.app.gateways.secret)
 
-                proxyReq.setHeader('X-Forwarded-From', 'API-Gateway')
+                proxyReq.setHeader('X-Forwarded-For', config.app.gateways.forwarder);
+                proxyReq.setHeader('X-Real-IP', config.app.gateways.ip);
 
                 if (expressReq.body && Object.keys(expressReq.body).length > 0) {
                     const bodyData = JSON.stringify(expressReq.body)
