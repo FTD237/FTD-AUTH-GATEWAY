@@ -4,8 +4,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --exec ts-node src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "pm2:build": "npm run build",
+    "pm2:start": "npm run build && pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop ecosystem.config.js",
+    "pm2:restart": "pm2 restart ecosystem.config.js",
+    "pm2:reload": "pm2 reload ecosystem.config.js",
+    "pm2:delete": "pm2 delete ecosystem.config.js",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
     "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
     "test": "jest",
     "lint": "eslint . --ext .ts"
   },
@@ -24,6 +34,7 @@
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.9",
     "path": "^0.12.7",
+    "pm2": "^6.0.8",
     "winston": "^3.17.0"
   },
   "devDependencies": {

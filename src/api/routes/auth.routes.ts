@@ -13,14 +13,6 @@ router.use('/api', verifyToken, apiLimiter)
 
 router.post('/authenticate/app', apiLimiter, authenticateApp)
 
-router.get('/api/data', (req: CustomRequest, res) => {
-    res.json({
-        status: 'success',
-        message: `Hello ${req.service}`,
-        data: {name: "a thing"}
-    })
-})
-
 router.use('/api',
     createAuthServiceProxy()
 )
