@@ -9,8 +9,26 @@ import { errorHandler } from "./utils/error-handler";
 
 const app = express();
 
+const corsOptions = {
+  origin: true, // Accepte toutes les origines (*)
+  credentials: true, // Autoriser les cookies/sessions
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authorization',
+    'X-API-Key',
+    'Cache-Control'
+  ],
+  exposedHeaders: ['X-Total-Count'], // Headers exposés au client
+  maxAge: 86400 // Cache preflight pendant 24h
+};
+
+
 app.use(helmet());
-app.use(cors(config.app.corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(loggerMiddleware);
